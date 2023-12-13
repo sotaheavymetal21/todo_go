@@ -3,7 +3,8 @@ package config
 import (
 	"log"
 
-	"example.com/myproject/todo_go/utils"
+	"todo_go/utils"
+
 	"gopkg.in/ini.v1" // Import the ini package
 )
 

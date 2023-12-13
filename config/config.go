@@ -3,6 +3,7 @@ package config
 import (
 	"log"
 
+	"example.com/myproject/todo_go/utils"
 	"gopkg.in/ini.v1" // Import the ini package
 )
 
@@ -17,8 +18,12 @@ var Config ConfigList
 
 func init() {
 	LoadConfig()
+	utils.LoggingSettings(Config.LogFile)
 }
 
+// LoadConfig は指定された設定ファイル（config.ini）から設定を読み込み、
+// ConfigList型のグローバル変数 Config に設定を格納します。
+// 設定が正常に読み込まれない場合は、エラーをログに記録してプログラムを終了します。
 func LoadConfig() {
 	cfg, err := ini.Load("config.ini")
 	if err != nil {

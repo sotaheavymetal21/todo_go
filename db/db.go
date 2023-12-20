@@ -29,8 +29,13 @@ func NewDB() *gorm.DB {
 	return db
 }
 
+// CloseDB は指定された gorm.DB データベース接続を閉じる
+// 関数はデータベースの接続プールをクリーンアップ
 func CloseDB(db *gorm.DB) {
+	// gorm.DB から標準の SQL データベースインターフェースを取得
 	sqlDB, _ := db.DB()
+
+	// データベース接続を閉じる
 	if err := sqlDB.Close(); err != nil {
 		log.Fatalln(err)
 	}
